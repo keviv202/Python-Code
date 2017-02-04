@@ -1,20 +1,15 @@
-def Count_Primes(n):
-    l=[2]
-    c=0
-    for i in range(3,n):
-        for j in range (2,int(i/2)+1):
-            if i%j ==0:
-                c=c+1
-                break
-        if c==1:
-            c=0
-        else:
-            l.append(i)
+def countPrimes(n):
+    if n < 3:
+        return 0
+    "Return all primes <= n."
+    # np1 = n + 1
+    s = [True] * n
+    s[0] = s[1] = False
+    sqrtn = int(round(n ** 0.5))
+    for i in range(2, sqrtn + 1):
+        if s[i]:
+            s[i * i: n: i] = False * len(range(i * i, n, i))
+    return s.count(True)
 
 
-
-
-
-    print(l)
-
-Count_Primes(100)
+countPrimes(9)

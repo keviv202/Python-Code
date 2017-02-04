@@ -1,6 +1,6 @@
 def climbStairs(n):
     l1, l2 = 0, 1
-    for _ in range(n):
+    for i in range(n):
         l1, l2 = l2, l1 + l2
     return l2
 

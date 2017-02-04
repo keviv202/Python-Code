@@ -1,26 +1,18 @@
-class best:
-    def best(self,n):
-        n.append(-99999999999)
-        c=0
-        high=n[0]
-        min =n[0]
+class Solution(object):
+    def maxProfit(self, prices):
+        if len(prices) < 2: return 0
+        buy = prices[0]
+        sale = 0
+        profit = 0
+        for i in range(len(prices)):
+            if prices[i] < buy: #if item lower than buy, set as buy
+                buy = prices[i]
+            elif prices[i] > buy:
+                sale = prices[i]
+                if sale - buy > profit:
+                    profit = sale - buy
+        if sale == 0: return 0
+        return profit
 
-        for i in range (len(n)-1):
-            if n[i]>n[i+1]:
-                c =c+1
-
-        if c==len(n)-1:
-            print ('No profit available')
-
-        else:
-
-            for i in range(len(n)-1):
-                if n[i]>high:
-                    high = n[i]
-                if n[i]<min:
-                    min = n[i]
-
-            print (high-min)
-
-best1 = best()
-best1.best([7,6,5,4,3,2,1,9])
+s = Solution()
+print (s.maxProfit([2,4,1]))

@@ -1,0 +1,73 @@
+class Node:
+    def __init__(self,n):
+        self.val=n
+        self.next=None
+
+class linkedlist:
+    head=None
+    tail=None
+
+    def insert(self,n):
+        if self.head is None:
+            self.head = Node(n)
+            self.tail = self.head
+
+        elif self.head is not None:
+            self.tail.next = Node(n)
+            self.tail = self.tail.next
+
+    def __str__(self):
+        temp = self.head
+        ret_str = ""
+        while (temp != None):
+            ret_str += (str(temp.val))
+            temp = temp.next
+        return ret_str
+
+    def get_size(self):
+        c = 0
+        temp1 = self.head
+        while temp1 is not None:
+            c = c+1
+            temp1 = temp1.next
+        return c
+
+    def find(self,n):
+        d =0
+        temp = self.head
+        while temp is not None:
+            if temp.val == n:
+                print ("In the List")
+                d = d + 1
+            temp = temp.next
+
+        if d == 0:
+            print("Not in List")
+
+    def remove(self,n):
+        prev = None
+        temp = self.head
+
+        while temp is not None:
+            if temp.val == n:
+                if prev is None:
+                    self.head = self.head.next
+                    break
+                if prev is not None:
+                    prev.next = temp.next
+            prev = temp
+            temp = temp.next
+
+        print(l)
+l = linkedlist()
+l.insert(1)
+l.insert(2)
+l.insert(3)
+l.insert(4)
+l.insert(5)
+l.insert(6)
+
+print(l)
+print(l.get_size())
+l.find(7)
+l.remove(5)
